@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-dark: #020617; /* Deep Slate Black */
+  --accent-blue: #2563eb;
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    @apply antialiased selection:bg-blue-500/30 selection:text-white;
+    background-color: var(--bg-dark);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* High-End Glassmorphism Card */
+  .vyncr-glass {
+    @apply bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .vyncr-glass:hover {
+    @apply border-blue-500/30 bg-slate-900/60;
+    transform: translateY(-2px);
+  }
+
+  /* Cyber-Gradient Text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-indigo-400 to-emerald-400;
+  }
+
+  /* Animated Scanner Line Effect */
+  .scanner-line {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    animation: scan 3s linear infinite;
+    position: absolute;
+    top: 0;
+  }
+}
+
+/* --- ANIMATIONS --- */
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(400px); opacity: 0; }
+}
+
+/* --- CUSTOM SCROLLBAR (Professional App Style) --- */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* --- INPUT POLISHING --- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #0f172a inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
